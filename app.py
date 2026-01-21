@@ -93,11 +93,98 @@ st.markdown("""
     <h3 style="color:#00d9ff;">Try these examples:</h3>
     <ul style="font-size:1.05rem;">
         <li>What are the requirements for registering the master's thesis?</li>
-        <li>Was sind die Regelungen fur die Masterarbeit?</li>
+        <li>Was sind die Regelungen für die Masterarbeit?</li>
     </ul>
 </div>
 """, unsafe_allow_html=True)
 
+# ===== Fixed Footer under Chat Input =====
+st.markdown("""
+<style>
+/* ===== Stable Footer Base ===== */
+.chat-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba(26, 26, 46, 0.92);
+    backdrop-filter: blur(4px);
+
+    padding: 0.7rem 1.2rem;
+    border-top: 1px solid rgba(0, 217, 255, 0.12);
+
+    text-align: center;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+
+    z-index: 999;
+}
+
+/* keep chat input above footer */
+.stChatInput {
+    margin-bottom: 3.4rem;
+}
+
+.chat-footer strong {
+    color: #e8e8e8;
+    font-weight: 600;
+}
+
+/* divider dots — theme color */
+.chat-footer .dot {
+    color: #00d9ff;
+    opacity: 0.6;
+    margin: 0 0.35rem;
+}
+
+/* ===== Dynamic Breathing Divider ===== */
+.chat-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0, 217, 255, 0.7),
+        transparent
+    );
+
+    animation: breatheLine 4.5s ease-in-out infinite;
+}
+
+/* ===== Animation ===== */
+@keyframes breatheLine {
+    0% {
+        opacity: 0.25;
+        width: 35%;
+        left: 32.5%;
+    }
+    50% {
+        opacity: 0.85;
+        width: 45%;
+        left: 27.5%;
+    }
+    100% {
+        opacity: 0.25;
+        width: 35%;
+        left: 32.5%;
+    }
+}
+</style>
+
+<div class="chat-footer">
+    <strong>Course:</strong> Seminar Biomedical Engineering
+    <span class="dot">•</span>
+    <strong>Supervisor:</strong> Prof. Dr. Marianne Maktabi
+    <span class="dot">•</span>
+    <strong>Developed by:</strong> Omar Elnakib &amp; Omar Jema
+</div>
+""", unsafe_allow_html=True)
 ###########################################################################
 # SIDEBAR: Chat management
 ###########################################################################
